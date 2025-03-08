@@ -31,9 +31,9 @@ function Advocates() {
   };
 
   const filteredAdvocates = advocates.filter((advocate) => {
+    const name = `${advocate.firstName} ${advocate.lastName}`;
     return (
-      advocate.firstName.includes(searchTerm) ||
-      advocate.lastName.includes(searchTerm) ||
+      name.includes(searchTerm) ||
       advocate.city.includes(searchTerm) ||
       advocate.degree.includes(searchTerm) ||
       advocate.specialties.join(" ").includes(searchTerm) ||
