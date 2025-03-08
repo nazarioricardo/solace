@@ -32,11 +32,13 @@ function Table({ advocates }: TableProps) {
               <td className="border border-gray-300 p-2">{advocate.city}</td>
               <td className="border border-gray-300 p-2">{advocate.degree}</td>
               <td className="border border-gray-300 p-2">
-                {advocate.specialties.map((s, index) => (
-                  <div key={index} className="mb-1">
-                    {s}
-                  </div>
-                ))}
+                <ul>
+                  {advocate.specialties.map((s, index) => (
+                    <li key={index} className="mb-1 list-disc list-inside">
+                      {s}
+                    </li>
+                  ))}
+                </ul>
               </td>
               <td className="border border-gray-300 p-2">
                 {advocate.yearsOfExperience}
