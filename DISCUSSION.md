@@ -27,3 +27,6 @@ I kept styling minimal but chose some key points that I felt made the entire thi
 
 - Database
   - I need to workout how to query by specialty
+  - > Consider both frontend and backend performance improvements. Assume we have a database of hundreds of thousands of advocates we need to search through.
+    - DB performance is not scalable right now.
+    - Front end would need pagination and lazy loading
