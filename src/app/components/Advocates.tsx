@@ -23,14 +23,11 @@ function Advocates() {
     fetchAdvocates();
   }, []);
 
-  const onChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const { value } = event.target;
-    setSearchTerm(value);
-  };
-
   const onSubmitForm = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log("submitting form...");
+    const formData = new FormData(event.currentTarget);
+    const searchValue = formData.get("search-term") as string;
+    setSearchTerm(searchValue.trim());
   };
 
   const filteredAdvocates = advocates.filter((advocate) => {
@@ -46,7 +43,7 @@ function Advocates() {
 
   return (
     <div>
-      <SearchForm onChange={onChange} onSubmit={onSubmitForm} />
+      <SearchForm onSubmit={onSubmitForm} searchTerm={searchTerm} />
       <Table advocates={filteredAdvocates} />
     </div>
   );
