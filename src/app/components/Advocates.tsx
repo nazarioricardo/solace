@@ -30,17 +30,27 @@ function Advocates() {
     setSearchTerm(searchValue.trim());
   };
 
-  const filteredAdvocates = advocates.filter((advocate) => {
-    const name = `${advocate.firstName} ${advocate.lastName}`;
-    return (
-      name.includes(searchTerm) ||
-      advocate.city.includes(searchTerm) ||
-      advocate.degree.includes(searchTerm) ||
-      advocate.specialties.join(" ").includes(searchTerm) ||
-      String(advocate.yearsOfExperience).includes(searchTerm) ||
-      String(advocate.phoneNumber).includes(searchTerm)
-    );
-  });
+  const filteredAdvocates = advocates.filter(
+    ({
+      firstName,
+      lastName,
+      city,
+      degree,
+      specialties,
+      yearsOfExperience,
+      phoneNumber,
+    }) => {
+      const name = `${firstName} ${lastName}`.toLocaleLowerCase();
+      return (
+        name.toLocaleLowerCase().includes(searchTerm) ||
+        city.toLocaleLowerCase().includes(searchTerm) ||
+        degree.toLocaleLowerCase().includes(searchTerm) ||
+        specialties.join(" ").toLocaleLowerCase().includes(searchTerm) ||
+        String(yearsOfExperience).includes(searchTerm) ||
+        String(phoneNumber).includes(searchTerm)
+      );
+    }
+  );
 
   return (
     <div>
