@@ -9,11 +9,7 @@ type SearchFormProps = {
 
 function SearchForm({ onSubmit, searchTerm }: SearchFormProps) {
   return (
-    <form onSubmit={onSubmit}>
-      <label htmlFor="search-input">Search</label>
-      <div>
-        Searching for: <span>{searchTerm}</span>
-      </div>
+    <form className="flex flex-col items-center" onSubmit={onSubmit}>
       <input name="search-term" className="border border-black" />
       <button>Reset Search</button>
     </form>

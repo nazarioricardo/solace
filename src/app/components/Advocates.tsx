@@ -40,7 +40,7 @@ function Advocates() {
       yearsOfExperience,
       phoneNumber,
     }) => {
-      const name = `${firstName} ${lastName}`.toLocaleLowerCase();
+      const name = `${firstName} ${lastName}`;
       return (
         name.toLocaleLowerCase().includes(searchTerm) ||
         city.toLocaleLowerCase().includes(searchTerm) ||
@@ -53,8 +53,12 @@ function Advocates() {
   );
 
   return (
-    <div>
+    <div className="flex flex-col gap-4 container items-center mx-auto p-4">
+      <h2>Find Your Advocate</h2>
       <SearchForm onSubmit={onSubmitForm} searchTerm={searchTerm} />
+      <div className="">
+        Searching for: <span>{searchTerm}</span>
+      </div>
       <Table advocates={filteredAdvocates} />
     </div>
   );
