@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import type { ChangeEvent, FormEvent } from "react";
+import type { FormEvent } from "react";
 import { Advocate } from "../types";
 import SearchForm from "./SearchForm";
 import Table from "./Table";
