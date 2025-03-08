@@ -37,7 +37,8 @@ function Advocates() {
       advocate.city.includes(searchTerm) ||
       advocate.degree.includes(searchTerm) ||
       advocate.specialties.join(" ").includes(searchTerm) ||
-      String(advocate.yearsOfExperience).includes(searchTerm)
+      String(advocate.yearsOfExperience).includes(searchTerm) ||
+      String(advocate.phoneNumber).includes(searchTerm)
     );
   });
 
