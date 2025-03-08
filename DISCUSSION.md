@@ -1,10 +1,8 @@
 # Notes on Deliverables
 
-I created pull requests where it made sense, but the work started stacking on itself so there are two main PRs to check. The branches being `feat/assignment` and `feat/db`.
+I made most of the work in the branch `feat/assignment`. So I made PR against main: [https://github.com/nazarioricardo/solace/pull/2](https://github.com/nazarioricardo/solace/pull/2)
 
-The bulk of the work was on `feat/assignment` so that PR is against `main`.
-
-The `feat/db` PR is against `feat/assignment`, since I implemented db functionality against `feat/assignment`.
+The final project with db implementation is on `feat/db`. So I made a PR against `feat/assignment`: [https://github.com/nazarioricardo/solace/pull/3](https://github.com/nazarioricardo/solace/pull/3)
 
 # Process
 
