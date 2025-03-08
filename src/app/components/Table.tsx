@@ -7,33 +7,43 @@ type TableProps = {
 
 function Table({ advocates }: TableProps) {
   return (
-    <table>
+    <table className="border-collapse border border-gray-300 w-full">
       <thead>
-        <tr>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>City</th>
-          <th>Degree</th>
-          <th>Specialties</th>
-          <th>Years of Experience</th>
-          <th>Phone Number</th>
+        <tr className="bg-gray-100">
+          <th className="border border-gray-300 p-2">First Name</th>
+          <th className="border border-gray-300 p-2">Last Name</th>
+          <th className="border border-gray-300 p-2">City</th>
+          <th className="border border-gray-300 p-2">Degree</th>
+          <th className="border border-gray-300 p-2">Specialties</th>
+          <th className="border border-gray-300 p-2">Years of Experience</th>
+          <th className="border border-gray-300 p-2">Phone Number</th>
         </tr>
       </thead>
       <tbody>
         {advocates.map((advocate) => {
           return (
-            <tr key={advocate.id}>
-              <td>{advocate.firstName}</td>
-              <td>{advocate.lastName}</td>
-              <td>{advocate.city}</td>
-              <td>{advocate.degree}</td>
-              <td>
-                {advocate.specialties.map((s) => (
-                  <div>{s}</div>
+            <tr key={advocate.id} className="hover:bg-gray-50">
+              <td className="border border-gray-300 p-2">
+                {advocate.firstName}
+              </td>
+              <td className="border border-gray-300 p-2">
+                {advocate.lastName}
+              </td>
+              <td className="border border-gray-300 p-2">{advocate.city}</td>
+              <td className="border border-gray-300 p-2">{advocate.degree}</td>
+              <td className="border border-gray-300 p-2">
+                {advocate.specialties.map((s, index) => (
+                  <div key={index} className="mb-1">
+                    {s}
+                  </div>
                 ))}
               </td>
-              <td>{advocate.yearsOfExperience}</td>
-              <td>{advocate.phoneNumber}</td>
+              <td className="border border-gray-300 p-2">
+                {advocate.yearsOfExperience}
+              </td>
+              <td className="border border-gray-300 p-2">
+                {advocate.phoneNumber}
+              </td>
             </tr>
           );
         })}
