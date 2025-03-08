@@ -6,16 +6,6 @@ type TableProps = {
 };
 
 function Table({ advocates }: TableProps) {
-  // useEffect(() => {
-  //   console.log("fetching advocates...");
-  //   fetch("/api/advocates").then((response) => {
-  //     response.json().then((jsonResponse) => {
-  //       setAdvocates(jsonResponse.data);
-  //       setFilteredAdvocates(jsonResponse.data);
-  //     });
-  //   });
-  // }, []);
-
   return (
     <table>
       <thead>
