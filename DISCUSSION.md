@@ -2,6 +2,10 @@
 
 I created pull requests where it made sense, but the work started stacking on itself so there are two main PRs to check. The branches being `feat/assignment` and `feat/db`.
 
+The bulk of the work was on `feat/assignment` so that PR is against `main`.
+
+The `feat/db` PR is against `feat/assignment`, since I implemented db functionality against `feat/assignment`.
+
 # Process
 
 My approach was to focus mainly on functionality, starting with the obvious things first, such as the hydration error. Then noticed hot reload wasn't working.
