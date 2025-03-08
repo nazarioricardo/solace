@@ -12,45 +12,49 @@ function Advocates() {
   const [advocates, setAdvocates] = useState<Advocates>([]);
   const [searchTerm, setSearchTerm] = useState<string>("");
 
-  const fetchAdvocates = async () => {
-    const response = await fetch("/api/advocates");
-    const jsonResponse = await response.json();
-    setAdvocates(jsonResponse.data);
+  const fetchAdvocates = async (search: string = "") => {
+    const response = await fetch(
+      `/api/advocates${search ? `/?search=${search}` : ""}`
+    );
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(
+        errorData.error || `Server responded with status ${response.status}`
+      );
+    }
+
+    const json = await response.json();
+    return json.data;
   };
 
   useEffect(() => {
     console.log("fetching advocates...");
-    fetchAdvocates();
+
+    fetchAdvocates()
+      .then((data) => {
+        setAdvocates(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching advocates", error);
+        setAdvocates([]);
+      });
   }, []);
 
-  const onSubmitForm = (event: FormEvent<HTMLFormElement>) => {
+  const onSubmitForm = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     const searchValue = formData.get("search-term") as string;
     setSearchTerm(searchValue.trim());
-  };
 
-  const filteredAdvocates = advocates.filter(
-    ({
-      firstName,
-      lastName,
-      city,
-      degree,
-      specialties,
-      yearsOfExperience,
-      phoneNumber,
-    }) => {
-      const name = `${firstName} ${lastName}`;
-      return (
-        name.toLocaleLowerCase().includes(searchTerm) ||
-        city.toLocaleLowerCase().includes(searchTerm) ||
-        degree.toLocaleLowerCase().includes(searchTerm) ||
-        specialties.join(" ").toLocaleLowerCase().includes(searchTerm) ||
-        String(yearsOfExperience).includes(searchTerm) ||
-        String(phoneNumber).includes(searchTerm)
-      );
+    try {
+      const data = await fetchAdvocates(searchValue);
+      setAdvocates(data);
+    } catch (error) {
+      console.error("Error fetching advocates", error);
+      setAdvocates([]);
     }
-  );
+  };
 
   return (
     <div className="flex flex-col gap-4 container items-center mx-auto p-4">
@@ -59,7 +63,7 @@ function Advocates() {
       <div className="">
         Searching for: <span>{searchTerm}</span>
       </div>
-      <Table advocates={filteredAdvocates} />
+      <Table advocates={advocates} />
     </div>
   );
 }
